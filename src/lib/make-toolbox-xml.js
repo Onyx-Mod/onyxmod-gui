@@ -1440,6 +1440,8 @@ const liveTests = function () {
                 <shadow type="data_filterlistitem"></shadow>
             </value>
         </block>
+        ${blockSeparator}
+        <block type="control_dualblock"></block>
     </category>
     `;
 };
