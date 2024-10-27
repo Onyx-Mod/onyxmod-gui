@@ -269,8 +269,8 @@ const looks = function (isInitialSetup, isStage, targetId, costumeName, backdrop
                 </shadow>
             </value>
         </block>
-        <block type="looks_sayWidth"></block>
-        <block type="looks_sayHeight"></block>
+        <block id="${targetId}_sayWidth" type="looks_sayWidth"></block>
+        <block id="${targetId}_sayHeight" type="looks_sayHeight"></block>
         ${blockSeparator}
         `}
         ${isStage ? `
@@ -355,8 +355,8 @@ const looks = function (isInitialSetup, isStage, targetId, costumeName, backdrop
                     </shadow>
                 </value>
             </block>
-            <block type="looks_stretchGetX"></block>
-            <block type="looks_stretchGetY"></block>
+            <block id="${targetId}_stretchGetX" type="looks_stretchGetX"></block>
+            <block id="${targetId}_stretchGetY" type="looks_stretchGetY"></block>
         `}
         ${blockSeparator}
         <block type="looks_changeeffectby">
@@ -379,13 +379,13 @@ const looks = function (isInitialSetup, isStage, targetId, costumeName, backdrop
             </value>
         </block>
         <block type="looks_cleargraphiceffects"/>
-        <block type="looks_getEffectValue"/>
-        <block type="looks_tintColor"/>
+        <block id="${targetId}_getEffectValue" type="looks_getEffectValue"/>
+        <block id="${targetId}_tintColor" type="looks_tintColor"/>
         ${blockSeparator}
         ${isStage ? '' : `
             <block type="looks_show"/>
             <block type="looks_hide"/>
-            <block type="looks_getSpriteVisible"/>
+            <block id="${targetId}_getSpriteVisible" type="looks_getSpriteVisible"/>
             ${blockSeparator}
             <block type="looks_changeVisibilityOfSpriteShow">
                 <value name="VISIBLE_OPTION">
@@ -423,7 +423,7 @@ const looks = function (isInitialSetup, isStage, targetId, costumeName, backdrop
                     <shadow type="looks_getOtherSpriteVisible_menu"/>
                 </value>
             </block>
-            <block type="looks_layersGetLayer"></block>
+            <block id="${targetId}_layersGetLayer" type="looks_layersGetLayer"></block>
             ${blockSeparator}
         `}
         ${isStage ? `
@@ -533,7 +533,7 @@ const sound = function (isInitialSetup, isStage, targetId, soundName) {
             </value>
         </block>
         <block type="sound_cleareffects"/>
-        <block type="sound_getEffectValue"/>
+        <block id="${targetId}_soundgetEffectValue" type="sound_getEffectValue"/>
         ${blockSeparator}
         <block type="sound_changevolumeby">
             <value name="VOLUME">
@@ -732,7 +732,7 @@ const control = function (isInitialSetup, isStage) {
     `;
 };
 
-const sensing = function (isInitialSetup, isStage) {
+const sensing = function (isInitialSetup, isStage, targetId) {
     const name = translate('SENSING_ASK_TEXT', 'What\'s your name?');
     // const openDocumentation = translate('OPEN_DOCUMENTATION', 'Open Documentation');
     const helpManual = translate('HELP_MANUAL', 'Help Manual');
@@ -879,7 +879,7 @@ const sensing = function (isInitialSetup, isStage) {
         ${isStage ? '' : `
             ${blockSeparator}
             <block type="sensing_setdragmode" id="sensing_setdragmode"></block>
-            <block type="sensing_getdragmode" id="sensing_getdragmode"></block>
+            <block id="${targetId}_getdragmode" type="sensing_getdragmode"></block>
             ${blockSeparator}
         `}
         ${blockSeparator}
