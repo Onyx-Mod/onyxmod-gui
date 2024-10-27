@@ -252,6 +252,11 @@ const messages = defineMessages({
         description: 'Label for the clipboard item monitor when shown on the stage',
         id: 'gui.opcodeLabels.getclipboard'
     },
+    sensing_getdragmode: {
+        defaultMessage: 'draggable?',
+        description: 'Label for the draggable monitor when shown on the stage',
+        id: 'gui.opcodeLabels.getdragmode'
+    },
     sensing_loud: {
         defaultMessage: 'loud?',
         description: 'Label for the loud monitor when shown on the stage',
@@ -330,6 +335,7 @@ class OpcodeLabels {
             sensing_mousex: {category: 'sensing'},
             sensing_mousey: {category: 'sensing'},
             sensing_getclipboard: {category: 'sensing'},
+            sensing_getdragmode: {category: 'sensing'},
             sensing_loud: {category: 'sensing'},
             sensing_dayssince2000: {category: 'sensing'},
             sensing_loggedin: {category: 'sensing'},
@@ -435,6 +441,7 @@ class OpcodeLabels {
         this._opcodeMap.sensing_mousex.labelFn = () => this._translator(messages.sensing_mousex);
         this._opcodeMap.sensing_mousey.labelFn = () => this._translator(messages.sensing_mousey);
         this._opcodeMap.sensing_getclipboard.labelFn = () => this._translator(messages.sensing_getclipboard);
+        this._opcodeMap.sensing_getdragmode.labelFn = () => this._translator(messages.sensing_getdragmode);
         this._opcodeMap.sensing_loud.labelFn = () => this._translator(messages.sensing_loud);
         this._opcodeMap.sensing_dayssince2000.labelFn = () => this._translator(messages.sensing_dayssince2000);
         this._opcodeMap.sensing_loggedin.labelFn = () => this._translator(messages.sensing_loggedin);
