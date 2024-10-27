@@ -30,13 +30,6 @@ const motion = function (isInitialSetup, isStage, targetId) {
                 </shadow>
             </value>
         </block>
-        <block type="motion_movebacksteps">
-            <value name="STEPS">
-                <shadow type="math_number">
-                    <field name="NUM">10</field>
-                </shadow>
-            </value>
-        </block>
         <block type="motion_moveupdownsteps">
             <value name="STEPS">
                 <shadow type="math_number">
@@ -182,7 +175,6 @@ const motion = function (isInitialSetup, isStage, targetId) {
         </block>
         ${blockSeparator}
         <block type="motion_setrotationstyle"/>
-        ${blockSeparator}
         <block type="motion_move_sprite_to_scene_side"/>
         ${blockSeparator}
         <block id="${targetId}_xposition" type="motion_xposition"/>
@@ -297,7 +289,6 @@ const looks = function (isInitialSetup, isStage, targetId, costumeName, backdrop
                 </value>
             </block>
             <block type="looks_nextbackdrop"/>
-            <block type="looks_previousbackdrop"/>
             <block type="looks_getinputofcostume">
                 <value name="INPUT">
                     <shadow type="looks_getinput_menu"/>
@@ -317,7 +308,6 @@ const looks = function (isInitialSetup, isStage, targetId, costumeName, backdrop
                 </value>
             </block>
             <block type="looks_nextcostume"/>
-            <block type="looks_previouscostume"/>
             ${blockSeparator}
             <block type="looks_switchbackdropto">
                 <value name="BACKDROP">
@@ -521,7 +511,6 @@ const sound = function (isInitialSetup, isStage, targetId, soundName) {
                 </shadow>
             </value>
         </block>
-        ${blockSeparator}
         <block id="${targetId}_sound_getLength" type="sound_getLength">
             <value name="SOUND_MENU">
                 <shadow type="sound_sounds_menu">
