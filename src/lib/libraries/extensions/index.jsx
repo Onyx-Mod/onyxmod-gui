@@ -1028,7 +1028,7 @@ const menuItems = [
     },
     {
         name: 'SharkPool\'s Extension Collection',
-        href: 'https://sharkpools-extensions.vercel.app/?originPM=true',
+        href: 'https://sharkpools-extensions.vercel.app/',
         extensionId: 'special_sharkpoolExtensionLibrary',
         iconURL: sharkpoolGalleryIcon,
         description: 'Tons of extensions created by SharkPool.\n\nClick on an extension while this menu is open to add it to your project.',
