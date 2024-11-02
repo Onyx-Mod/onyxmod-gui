@@ -68,6 +68,7 @@ import {
     closeLoginMenu,
     loginMenuOpen
 } from '../../reducers/menus';
+import TWBlocksThemeMenu from './tw-theme-blocks.jsx';
 import { setFileHandle } from '../../reducers/tw.js';
 
 import collectMetadata from '../../lib/collect-metadata';
@@ -679,6 +680,9 @@ class MenuBar extends React.Component {
                                             </span>
                                         </div>
                                     </MenuItem>
+                                    <TWBlocksThemeMenu
+                                        onOpenCustomSettings={this.props.onOpenCustomSettings}
+                                    />
                                 </MenuBarMenu>
                             </div>
                         )}
@@ -1172,6 +1176,7 @@ MenuBar.propTypes = {
     onLogOut: PropTypes.func,
     onOpenRegistration: PropTypes.func,
     onOpenTipLibrary: PropTypes.func,
+    onOpenCustomSettings: PropTypes.func,
     onProjectTelemetryEvent: PropTypes.func,
     onRequestOpenAbout: PropTypes.func,
     onRequestCloseAbout: PropTypes.func,

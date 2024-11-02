@@ -67,12 +67,25 @@ const blockColors = {
         tertiary: '#FF3355',
         quaternary: '#FF3355'
     },
+    comments: {
+        primary: '#E4DB8C',
+        secondary: '#C6BE79',
+        tertiary: '#A8A167',
+        quaternary: '#A8A167'
+    },
+    addons: {
+        primary: '#29beb8',
+        secondary: '#3aa8a4',
+        tertiary: '#3aa8a4',
+        quaternary: '#3aa8a4'
+    },
     text: '#FFFFFF',
     workspace: '#F9F9F9',
     toolboxHover: '#4C97FF',
     toolboxSelected: '#E9EEF2',
     toolboxText: '#575E75',
     toolbox: '#FFFFFF',
+    blackText: '#575E75',
     flyout: '#F9F9F9',
     scrollbar: '#CECDCE',
     scrollbarHover: '#CECDCE',
@@ -97,9 +110,29 @@ const blockColors = {
     numPadText: 'white', // Do not use hex here, it cannot be inlined with data-uri SVG
     valueReportBackground: '#FFFFFF',
     valueReportBorder: '#AAAAAA',
-    menuHover: 'rgba(0, 0, 0, 0.2)'
+    valueReportForeground: '#000000',
+    menuHover: 'rgba(0, 0, 0, 0.2)',
+    contextMenuBackground: '#ffffff',
+    contextMenuBorder: '#cccccc',
+    contextMenuForeground: '#000000',
+    contextMenuActiveBackground: '#d6e9f8',
+    contextMenuDisabledForeground: '#cccccc',
+    flyoutLabelColor: '#575E75',
+    checkboxInactiveBackground: '#ffffff',
+    checkboxInactiveBorder: '#c8c8c8',
+    checkboxActiveBackground: '#4C97FF',
+    checkboxActiveBorder: '#3373CC',
+    checkboxCheck: '#ffffff',
+    buttonBorder: '#c6c6c6',
+    buttonActiveBackground: '#ffffff',
+    buttonForeground: '#575E75',
+    zoomIconFilter: 'none',
+    gridColor: '#dddddd'
 };
 
+const extensions = {};
+
 export {
-    blockColors
+    blockColors,
+    extensions
 };

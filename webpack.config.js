@@ -226,7 +226,16 @@ module.exports = [
                 patterns: [
                     {
                         from: 'node_modules/scratch-blocks/media',
-                        to: 'static/blocks-media'
+                        to: 'static/blocks-media/default'
+                    },
+                    {
+                        from: 'node_modules/scratch-blocks/media',
+                        to: 'static/blocks-media/high-contrast'
+                    },
+                    {
+                        from: 'src/lib/themes/blocks/high-contrast-media/blocks-media',
+                        to: 'static/blocks-media/high-contrast',
+                        force: true
                     }
                 ]
             }),

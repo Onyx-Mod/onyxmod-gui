@@ -21,6 +21,8 @@ import DragConstants from '../lib/drag-constants';
 import defineDynamicBlock from '../lib/define-dynamic-block';
 import AddonHooks from '../addons/hooks';
 import LoadScratchBlocksHOC from '../lib/tw-load-scratch-blocks-hoc.jsx';
+import {Theme} from '../lib/themes';
+import {injectExtensionBlockTheme, injectExtensionCategoryTheme} from '../lib/themes/blockHelpers';
 
 import {connect} from 'react-redux';
 import {updateToolbox} from '../reducers/toolbox';
@@ -155,9 +157,16 @@ class Blocks extends React.Component {
         Msg.PROCEDURES_DOCS = this.props.intl.formatMessage(messages.PROCEDURES_DOCS);
 
         const workspaceConfig = defaultsDeep({},
-            Blocks.defaultOptions,
             this.props.options,
-            {rtl: this.props.isRtl, toolbox: this.props.toolboxXML}
+            {
+                rtl: this.props.isRtl,
+                toolbox: this.props.toolboxXML,
+                colours: this.props.theme.getBlockColors(),
+                grid: {
+                    colour: this.props.theme.getBlockColors().gridColor
+                }
+            },
+            Blocks.defaultOptions
         );
         this.workspace = this.ScratchBlocks.inject(this.blocks, workspaceConfig);
 
@@ -447,12 +456,16 @@ class Blocks extends React.Component {
             const stageCostumes = stage.getCostumes();
             const targetCostumes = target.getCostumes();
             const targetSounds = target.getSounds();
-            const dynamicBlocksXML = this.props.vm.runtime.getBlocksXML(target);
+            const dynamicBlocksXML = injectExtensionCategoryTheme(
+                this.props.vm.runtime.getBlocksXML(target),
+                this.props.theme
+            );
             return makeToolboxXML(false, target.isStage, target.id, dynamicBlocksXML,
                 targetCostumes[targetCostumes.length - 1].name,
                 stageCostumes[stageCostumes.length - 1].name,
                 targetSounds.length > 0 ? targetSounds[targetSounds.length - 1].name : '',
-                this.props.isLiveTest
+                this.props.isLiveTest,
+                this.props.theme.getBlockColors()
             );
         } catch (error) {
             return null;
@@ -537,7 +550,7 @@ class Blocks extends React.Component {
                     if (blockInfo.info && blockInfo.info.isDynamic) {
                         dynamicBlocksInfo.push(blockInfo);
                     } else if (blockInfo.json) {
-                        staticBlocksJson.push(blockInfo.json);
+                        staticBlocksJson.push(injectExtensionBlockTheme(blockInfo.json, this.props.theme));
                     } else if (blockInfo.info.blockType === 'button') {
                         this.workspace.registerButtonCallback(blockInfo.info.opcode, blockInfo.info.func);
                     }
@@ -744,22 +757,11 @@ Blocks.propTypes = {
             wheel: PropTypes.bool,
             startScale: PropTypes.number
         }),
-        colours: PropTypes.shape({
-            workspace: PropTypes.string,
-            flyout: PropTypes.string,
-            toolbox: PropTypes.string,
-            toolboxSelected: PropTypes.string,
-            scrollbar: PropTypes.string,
-            scrollbarHover: PropTypes.string,
-            insertionMarker: PropTypes.string,
-            insertionMarkerOpacity: PropTypes.number,
-            fieldShadow: PropTypes.string,
-            dragShadowOpacity: PropTypes.number
-        }),
         comments: PropTypes.bool,
         collapse: PropTypes.bool
     }),
     stageSize: PropTypes.oneOf(Object.keys(STAGE_DISPLAY_SIZES)).isRequired,
+    theme: PropTypes.instanceOf(Theme),
     toolboxXML: PropTypes.string,
     updateMetrics: PropTypes.func,
     updateToolboxState: PropTypes.func,
@@ -782,18 +784,6 @@ Blocks.defaultOptions = {
         length: 2,
         colour: '#ddd'
     },
-    colours: {
-        workspace: '#F9F9F9',
-        flyout: '#F9F9F9',
-        toolbox: '#FFFFFF',
-        toolboxSelected: '#E9EEF2',
-        scrollbar: '#CECDCE',
-        scrollbarHover: '#CECDCE',
-        insertionMarker: '#000000',
-        insertionMarkerOpacity: 0.2,
-        fieldShadow: 'rgba(255, 255, 255, 0.3)',
-        dragShadowOpacity: 0.6
-    },
     comments: true,
     collapse: false,
     sounds: false
@@ -801,7 +791,8 @@ Blocks.defaultOptions = {
 
 Blocks.defaultProps = {
     isVisible: true,
-    options: Blocks.defaultOptions
+    options: Blocks.defaultOptions,
+    theme: Theme.light
 };
 
 const mapStateToProps = state => ({

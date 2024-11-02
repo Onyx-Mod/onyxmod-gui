@@ -1,8 +1,9 @@
-import musicIcon from './extensions/musicIcon.svg';
-import penIcon from './extensions/penIcon.svg';
-import text2speechIcon from './extensions/text2speechIcon.svg';
-import translateIcon from './extensions/translateIcon.svg';
-import videoSensingIcon from './extensions/videoSensingIcon.svg';
+import musicIcon from './high-contrast-media/extensions/musicIcon.svg';
+import penIcon from './high-contrast-media/extensions/penIcon.svg';
+import text2speechIcon from './high-contrast-media/extensions/text2speechIcon.svg';
+import translateIcon from './high-contrast-media/extensions/translateIcon.svg';
+import videoSensingIcon from './high-contrast-media/extensions/videoSensingIcon.svg';
+import {hex2hsv, hsv2hex} from '../../tw-color-utils';
 
 const blockColors = {
     motion: {
@@ -74,9 +75,22 @@ const blockColors = {
         tertiary: '#FF3355',
         quaternary: '#FFE5EA'
     },
+    comments: {
+        primary: '#FFFACF',
+        secondary: '#EEE9C1',
+        tertiary: '#B1AA6C',
+        quaternary: '#B1AA6C'
+    },
+    addons: {
+        primary: '#34e4d0',
+        secondary: '#71e2d5',
+        tertiary: '#29b2a2',
+        quaternary: '#9ee2db'
+    },
     text: '#000000',
     textFieldText: '#000000', // Text inside of inputs e.g. 90 in [point in direction (90)]
     toolboxText: '#000000', // Toolbox text, color picker text (used to be #575E75)
+    blackText: '#000000',
     // The color that the category menu label (e.g. 'motion', 'looks', etc.) changes to on hover
     toolboxHover: '#3373CC',
     insertionMarker: '#000000',
@@ -104,7 +118,36 @@ const extensions = {
     }
 };
 
+const customExtensionColors = {
+    primary: primary => {
+        const hsv = hex2hsv(primary);
+        hsv[1] = Math.max(hsv[1] - 20, 0);
+        hsv[2] = Math.min(hsv[2] + 20, 100);
+        return hsv2hex(hsv);
+    },
+    secondary: primary => {
+        const hsv = hex2hsv(primary);
+        hsv[1] = Math.max(hsv[1] - 40, 0);
+        hsv[2] = Math.min(hsv[2] + 20, 100);
+        return hsv2hex(hsv);
+    },
+    tertiary: primary => {
+        const hsv = hex2hsv(primary);
+        hsv[2] = Math.max(hsv[2] - 20, 20);
+        return hsv2hex(hsv);
+    },
+    quaternary: primary => {
+        const hsv = hex2hsv(primary);
+        hsv[1] = Math.max(hsv[1] - 60, 0);
+        hsv[2] = Math.min(hsv[2] + 20, 100);
+        return hsv2hex(hsv);
+    },
+    categoryIconBackground: primary => customExtensionColors.primary(primary),
+    categoryIconBorder: primary => customExtensionColors.tertiary(primary)
+};
+
 export {
     blockColors,
-    extensions
+    extensions,
+    customExtensionColors
 };

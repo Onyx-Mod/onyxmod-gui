@@ -1,3 +1,5 @@
+import {hex2hsv, hsv2hex} from '../../tw-color-utils';
+
 const blockColors = {
     motion: {
         primary: '#0F1E33',
@@ -65,20 +67,41 @@ const blockColors = {
         tertiary: '#FF6680',
         quaternary: '#FF6680'
     },
+    comments: {
+        primary: '#33301F',
+        secondary: '#302D1D',
+        tertiary: '#E4DB8C',
+        quaternary: '#E4DB8C'
+    },
+    addons: {
+        primary: '#0b3331',
+        secondary: '#4C4C4C',
+        tertiary: '#34e4d0',
+        quaternary: '#34e4d0'
+    },
     text: 'rgba(255, 255, 255, .7)',
     textFieldText: '#E5E5E5',
-    workspace: '#121212',
-    toolboxSelected: '#4C4C4C',
-    toolboxText: '#E5E5E5',
-    toolbox: '#121212',
-    flyout: '#121212',
     textField: '#4C4C4C',
     menuHover: 'rgba(255, 255, 255, 0.3)'
 };
 
 const extensions = {};
 
+const customExtensionColors = {
+    primary: primary => {
+        const hsv = hex2hsv(primary);
+        hsv[2] = Math.max(hsv[2] - 70, 20);
+        return hsv2hex(hsv);
+    },
+    secondary: () => '#4C4C4C',
+    tertiary: primary => primary,
+    quaternary: primary => primary,
+    categoryIconBackground: primary => customExtensionColors.primary(primary),
+    categoryIconBorder: primary => customExtensionColors.tertiary(primary)
+};
+
 export {
     blockColors,
-    extensions
+    extensions,
+    customExtensionColors
 };
