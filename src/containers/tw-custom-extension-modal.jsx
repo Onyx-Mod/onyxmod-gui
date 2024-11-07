@@ -160,7 +160,7 @@ class CustomExtensionModal extends React.Component {
         } finally {
             if (failed && this.props.swapId) {
                 // eslint-disable-next-line no-alert
-                alert('The extension you used to for the edit has failed to load.');
+                alert('The extension you used for the edit has failed to load.');
                 this.props.vm.runtime._removeExtensionPrimitive(this.props.swapId);
             }
             if (failed) return;
