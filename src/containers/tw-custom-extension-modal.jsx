@@ -136,7 +136,7 @@ class CustomExtensionModal extends React.Component {
                 if (!loadedIds.includes(this.props.swapId)) {
                     for (const ext of loadedIds) this.props.vm.extensionManager.removeExtension(ext);
                     // eslint-disable-next-line no-alert
-                    alert('The extension you used to for the edit had a different id to the one you where editing.');
+                    alert('The extension you used for the edit had a different ID than the one you were editing.');
                 }
                 this.props.vm.runtime._removeExtensionPrimitive(this.props.swapId);
                 loadedIds.forEach(extId => {
@@ -152,12 +152,15 @@ class CustomExtensionModal extends React.Component {
         } catch (err) {
             failed = true;
             log.error(err);
-            // eslint-disable-next-line no-alert
-            alert(err);
+
+            if (err) {
+                // eslint-disable-next-line no-alert
+                alert(err);
+            }
         } finally {
             if (failed && this.props.swapId) {
                 // eslint-disable-next-line no-alert
-                alert('The extension you used to for the edit has failed to load.');
+                alert('The extension you used for the edit has failed to load.');
                 this.props.vm.runtime._removeExtensionPrimitive(this.props.swapId);
             }
             if (failed) return;
