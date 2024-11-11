@@ -20,10 +20,19 @@ const fromHardcodedGithub = username => ({
     text: username
 });
 const fromHardcodedNamed = username => ({
-    image: `https://penguinmod.com/unknown_user.png`,
-    href: "https://studio.penguinmod.com/credits.html#",
+    image: `https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/unknown_user.png`,
+    href: "https://jwklong.github.io/penguinmod.github.io/credits.html#",
     text: username
 });
+
+const fromHardcodedDiscord = async userId => {
+    const res = await fetch(`https://pmupdatereader.jeremygamer13.repl.co/user/${userId}`);
+    const json = await res.json();
+    return {
+        image: json.avatarURL,
+        text: json.username
+    };
+};
 
 const addonDevelopers = [
     {
@@ -127,73 +136,20 @@ const pmDevelopers = [
 ].map(fromHardcodedGithub);
 
 const pmPullRequestDevelopers = [ // these people made a PR that got merged, or got a dev to add something they made
-    {
-        text: 'NexusKitten',
-        image: `https://github.com/NexusKitten.png`,
-        href: `https://github.com/NexusKitten/`,
-    },
-    {
-        text: 'LilyMakesThings',
-        image: `https://github.com/LilyMakesThings.png`,
-        href: `https://github.com/LilyMakesThings/`,
-    },
-    {
-        text: 'MikeDev101',
-        image: `https://github.com/MikeDev101.png`,
-        href: `https://github.com/MikeDev101/`,
-    },
-    {
-        text: 'kokofixcomputers',
-        image: `https://github.com/kokofixcomputers.png`,
-        href: `https://github.com/kokofixcomputers/`,
-    },
-    {
-        text: 'PPPDUD',
-        image: `https://github.com/PPPDUD.png`,
-        href: `https://github.com/PPPDUD/`,
-    },
-    {
-        text: 'qbjl',
-        image: `https://github.com/qbjl.png`,
-        href: `https://github.com/qbjl/`,
-    },
-    {
-        text: 'minidogg',
-        image: `https://github.com/minidogg.png`,
-        href: `https://github.com/minidogg/`,
-    },
-    {
-        text: 'concertalyis',
-        image: `https://github.com/concertalyis.png`,
-        href: `https://github.com/concertalyis/`,
-    },
-    {
-        text: 'Steve0Greatness',
-        image: `https://github.com/Steve0Greatness.png`,
-        href: `https://github.com/Steve0Greatness/`,
-    },
-    {
-        text: 'ilikecoding-197',
-        image: `https://github.com/ilikecoding-197.png`,
-        href: `https://github.com/ilikecoding-197/`,
-    },
-    {
-        text: 'NotEmbin',
-        image: `https://github.com/NotEmbin.png`,
-        href: `https://github.com/NotEmbin/`,
-    },
-    {  // rx or ry single fix
-        text: 'NotCryptid',
-        image: `https://penguinmod.com/unknown_user.png`,
-        href: `https://github.com/NotCryptid/`,
-    },
-    {
-        text: 'DogeisCut',
-        image: `https://github.com/DogeisCut.png`,
-        href: `https://github.com/Dogeiscut/`,
-    },
+    'NexusKitten',
+    'LilyMakesThings',
+    'MikeDev101',
+    'kokofixcomputers',
+    'PPPDUD',
+    'qbjl',
+    'minidogg',
+    'concertalyis',
+    'Steve0Greatness',
+    'ilikecoding-197',
+    'NotEmbin',
+    'NotCryptid' // rx or ry single fix
     // list could be missing some people, but theres not really a way to tell
-];
+].map(fromHardcodedGithub);
 
 const pmApiDevelopers = [
     'JeremyGamer13',
@@ -204,164 +160,160 @@ const pmApiDevelopers = [
     'enderhacker'
 ].map(fromHardcodedGithub);
 
+// todo: should translators be only named or...?
 const pmTranslators = [
     {
         text: 'kolikiscool',
-        image: `https://penguinmod.com/unknown_user.png`,
-        href: "https://studio.penguinmod.com/credits.html#",
+        image: `https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/unknown_user.png`,
+        href: "https://jwklong.github.io/penguinmod.github.io/credits.html#",
     },
     {
         text: 'n0name',
-        image: `https://penguinmod.com/unknown_user.png`,
-        href: "https://studio.penguinmod.com/credits.html#",
+        image: `https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/unknown_user.png`,
+        href: "https://jwklong.github.io/penguinmod.github.io/credits.html#",
     },
     {
         text: 'a_pc',
-        image: `https://penguinmod.com/unknown_user.png`,
-        href: "https://studio.penguinmod.com/credits.html#",
-    },
-    {
-        text: 'LoyalBlackBishopyBoi',
-        image: `https://trampoline.turbowarp.org/avatars/by-username/LoyalBlackBishopyBoi`,
-        href: "https://scratch.mit.edu/users/LoyalBlackBishopyBoi/",
+        image: `https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/unknown_user.png`,
+        href: "https://jwklong.github.io/penguinmod.github.io/credits.html#",
     },
     {
         text: 'onetoanother',
         image: `https://trampoline.turbowarp.org/avatars/by-username/onetoanother`,
-        href: "https://penguinmod.com/profile?user=onetoanother",
+        href: "https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/profile?user=onetoanother",
     },
     {
         text: 'NamelessCat',
         image: `https://trampoline.turbowarp.org/avatars/by-username/NamelessCat`,
-        href: "https://penguinmod.com/profile?user=NamelessCat",
+        href: "https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/profile?user=NamelessCat",
     },
     {
         text: 'Just-Noone',
         image: `https://trampoline.turbowarp.org/avatars/by-username/Just-Noone`,
-        href: "https://penguinmod.com/profile?user=Just-Noone",
+        href: "https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/profile?user=Just-Noone",
     },
     {
         text: 'goose_but_smart',
         image: `https://trampoline.turbowarp.org/avatars/by-username/goose_but_smart`,
-        href: "https://penguinmod.com/profile?user=goose_but_smart",
+        href: "https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/profile?user=goose_but_smart",
     },
     {
         text: 'Le_Blob77',
         image: `https://trampoline.turbowarp.org/avatars/by-username/Le_Blob77`,
-        href: "https://penguinmod.com/profile?user=Le_Blob77",
+        href: "https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/profile?user=Le_Blob77",
     },
     {
         text: 'MrRedstonia',
         image: `https://trampoline.turbowarp.org/avatars/by-username/MrRedstonia`,
-        href: "https://penguinmod.com/profile?user=MrRedstonia",
+        href: "https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/profile?user=MrRedstonia",
     },
     {
         text: 'TheShovel',
         image: `https://trampoline.turbowarp.org/avatars/by-username/TheShovel`,
-        href: "https://penguinmod.com/profile?user=TheShovel",
+        href: "https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/profile?user=TheShovel",
     },
     {
         text: 'SmolBoi37',
-        image: `https://penguinmod.com/unknown_user.png`,
-        href: "https://studio.penguinmod.com/credits.html#",
+        image: `https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/unknown_user.png`,
+        href: "https://jwklong.github.io/penguinmod.github.io/credits.html#",
     },
     {
         text: 'GigantTech',
         image: `https://trampoline.turbowarp.org/avatars/by-username/GigantTech`,
-        href: "https://penguinmod.com/profile?user=GigantTech",
+        href: "https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/profile?user=GigantTech",
     },
     {
         text: 'hacker_anonimo',
         image: `https://trampoline.turbowarp.org/avatars/by-username/hacker_anonimo`,
-        href: "https://penguinmod.com/profile?user=hacker_anonimo",
+        href: "https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/profile?user=hacker_anonimo",
     },
     {
         text: 'zaaxd52',
         image: `https://trampoline.turbowarp.org/avatars/by-username/zaaxd52`,
-        href: "https://penguinmod.com/profile?user=zaaxd52",
+        href: "https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/profile?user=zaaxd52",
     },
     {
         text: 'G1nX',
         image: `https://trampoline.turbowarp.org/avatars/by-username/G1nX`,
-        href: "https://penguinmod.com/profile?user=G1nX",
+        href: "https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/profile?user=G1nX",
     },
     {
         text: 'FNFFortune',
         image: `https://trampoline.turbowarp.org/avatars/by-username/FNFFortune`,
-        href: "https://penguinmod.com/profile?user=FNFFortune",
+        href: "https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/profile?user=FNFFortune",
     },
     // has since left the server
     // possibly they have a new account, so replace the name & url if so
     {
         text: 'Gabberythethughunte',
-        image: `https://penguinmod.com/unknown_user.png`,
-        href: "https://penguinmod.com/profile?user=Gabberythethughunte",
+        image: `https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/unknown_user.png`,
+        href: "https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/profile?user=Gabberythethughunte",
     },
     {
         text: 'keriyo',
         image: `https://trampoline.turbowarp.org/avatars/by-username/keriyo`,
-        href: "https://penguinmod.com/profile?user=keriyo",
+        href: "https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/profile?user=keriyo",
     },
     {
         text: 'DenPlayTS',
         image: `https://trampoline.turbowarp.org/avatars/by-username/DenPlayTS`,
-        href: "https://penguinmod.com/profile?user=DenPlayTS",
+        href: "https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/profile?user=DenPlayTS",
     },
     {
         text: 'Tsalbre',
         image: `https://trampoline.turbowarp.org/avatars/by-username/Tsalbre`,
-        href: "https://penguinmod.com/profile?user=Tsalbre",
+        href: "https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/profile?user=Tsalbre",
     },
     {
         text: 'MubiLop',
         image: `https://trampoline.turbowarp.org/avatars/by-username/MubiLop`,
-        href: "https://penguinmod.com/profile?user=MubiLop",
+        href: "https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/profile?user=MubiLop",
     },
     {
         text: 'TLP136',
         image: `https://trampoline.turbowarp.org/avatars/by-username/TLP136`,
-        href: "https://penguinmod.com/profile?user=TLP136",
+        href: "https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/profile?user=TLP136",
     },
     {
         text: 'Cymock',
         image: `https://trampoline.turbowarp.org/avatars/by-username/Cymock`,
-        href: "https://penguinmod.com/profile?user=Cymock",
+        href: "https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/profile?user=Cymock",
     },
     {
         text: 'ItzzEndr',
         image: `https://trampoline.turbowarp.org/avatars/by-username/ItzzEndr`,
-        href: "https://penguinmod.com/profile?user=ItzzEndr",
+        href: "https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/profile?user=ItzzEndr",
     },
     {
         text: 'Capysussa',
         image: `https://trampoline.turbowarp.org/avatars/by-username/Capysussa`,
-        href: "https://penguinmod.com/profile?user=Capysussa",
+        href: "https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/profile?user=Capysussa",
     },
     // con-zie is now banned from PenguinMod
     {
         text: 'con-zie',
-        image: `https://penguinmod.com/unknown_user.png`,
-        href: "https://studio.penguinmod.com/credits.html#",
+        image: `https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/unknown_user.png`,
+        href: "https://jwklong.github.io/penguinmod.github.io/credits.html#",
     },
     {
         text: 'ImNotScratchY_lolol',
         image: `https://trampoline.turbowarp.org/avatars/by-username/ImNotScratchY_lolol`,
-        href: "https://penguinmod.com/profile?user=ImNotScratchY_lolol",
+        href: "https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/profile?user=ImNotScratchY_lolol",
     },
     {
         text: 'justablock',
         image: `https://trampoline.turbowarp.org/avatars/by-username/justablock`,
-        href: "https://penguinmod.com/profile?user=justablock",
+        href: "https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/profile?user=justablock",
     },
     {
         text: 'inventionpro',
         image: `https://trampoline.turbowarp.org/avatars/by-username/inventionpro`,
-        href: "https://penguinmod.com/profile?user=inventionpro",
+        href: "https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/profile?user=inventionpro",
     },
     {
         text: 'SkyBuilder1717',
         image: `https://trampoline.turbowarp.org/avatars/by-username/SkyBuilder1717`,
-        href: "https://penguinmod.com/profile?user=SkyBuilder1717",
+        href: "https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/profile?user=SkyBuilder1717",
     },
     {
         text: 'Parham1258',
@@ -371,12 +323,12 @@ const pmTranslators = [
     {
         text: 'lem0n0fficial',
         image: `https://trampoline.turbowarp.org/avatars/by-username/lem0n0fficial`,
-        href: "https://penguinmod.com/profile?user=lem0n0fficial",
+        href: "https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/profile?user=lem0n0fficial",
     },
     {
         text: 'Oldcoinmania',
         image: `https://trampoline.turbowarp.org/avatars/by-username/Oldcoinmania`,
-        href: "https://penguinmod.com/profile?user=Oldcoinmania",
+        href: "https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/profile?user=Oldcoinmania",
     },
     {
         text: 'mariocraft987',
@@ -385,154 +337,9 @@ const pmTranslators = [
     },
 ];
 
-const pmCostumeSubmittors = [
-    // accounts
-    {
-        text: 'budc123',
-        image: `https://github.com/budc123.png`,
-        href: `https://github.com/budc123/`,
-    },
-    {
-        text: 'concertalyis',
-        image: `https://github.com/concertalyis.png`,
-        href: `https://github.com/concertalyis/`,
-    },
-    {
-        text: 'WojtekCodesToday',
-        image: `https://github.com/WojtekCodesToday.png`,
-        href: `https://github.com/WojtekCodesToday/`,
-    },
-    {
-        text: 'ddededodediamante',
-        image: `https://github.com/ddededodediamante.png`,
-        href: `https://github.com/ddededodediamante/`,
-    },
-    {
-        text: 'G1nX',
-        image: `https://trampoline.turbowarp.org/avatars/by-username/G1nX`,
-        href: "https://penguinmod.com/profile?user=G1nX",
-    },
-    // unknown
-    {
-        text: 'maroonmball',
-        image: `https://penguinmod.com/unknown_user.png`,
-        href: "https://studio.penguinmod.com/credits.html#",
-    },
-    {
-        text: 'eviepepsi',
-        image: `https://penguinmod.com/unknown_user.png`,
-        href: "https://studio.penguinmod.com/credits.html#",
-    },
-    {
-        text: '1340073',
-        image: `https://penguinmod.com/unknown_user.png`,
-        href: "https://studio.penguinmod.com/credits.html#",
-    },
-    {
-        text: 'cubeycreator',
-        image: `https://penguinmod.com/unknown_user.png`,
-        href: "https://studio.penguinmod.com/credits.html#",
-    },
-    {
-        text: 'novaspiderultra',
-        image: `https://penguinmod.com/unknown_user.png`,
-        href: "https://studio.penguinmod.com/credits.html#",
-    },
-    {
-        text: 'poundpound0209',
-        image: `https://penguinmod.com/unknown_user.png`,
-        href: "https://studio.penguinmod.com/credits.html#",
-    },
-    {
-        text: 'gdplayer1035',
-        image: `https://penguinmod.com/unknown_user.png`,
-        href: "https://studio.penguinmod.com/credits.html#",
-    },
-    {
-        text: 'cognitixsammy',
-        image: `https://penguinmod.com/unknown_user.png`,
-        href: "https://studio.penguinmod.com/credits.html#",
-    },
-    {
-        text: 'thebusyman',
-        image: `https://penguinmod.com/unknown_user.png`,
-        href: "https://studio.penguinmod.com/credits.html#",
-    },
-    {
-        text: 'skyglide5',
-        image: `https://penguinmod.com/unknown_user.png`,
-        href: "https://studio.penguinmod.com/credits.html#",
-    },
-    {
-        text: 'cxnnie09',
-        image: `https://penguinmod.com/unknown_user.png`,
-        href: "https://studio.penguinmod.com/credits.html#",
-    },
-    {
-        text: 'hoveras',
-        image: `https://penguinmod.com/unknown_user.png`,
-        href: "https://studio.penguinmod.com/credits.html#",
-    },
-    {
-        text: 'blockgamer904',
-        image: `https://penguinmod.com/unknown_user.png`,
-        href: "https://studio.penguinmod.com/credits.html#",
-    },
-];
-const pmSoundSubmittors = [
-    // accounts
-    {
-        text: 'ddededodediamante',
-        image: `https://github.com/ddededodediamante.png`,
-        href: `https://github.com/ddededodediamante/`,
-    },
-    {
-        text: 'concertalyis',
-        image: `https://github.com/concertalyis.png`,
-        href: `https://github.com/concertalyis/`,
-    },
-    {
-        text: 'G1nX',
-        image: `https://trampoline.turbowarp.org/avatars/by-username/G1nX`,
-        href: "https://penguinmod.com/profile?user=G1nX",
-    },
-    // unknown
-    {
-        text: 'maroonmball',
-        image: `https://penguinmod.com/unknown_user.png`,
-        href: "https://studio.penguinmod.com/credits.html#",
-    },
-    {
-        text: 'jn567',
-        image: `https://penguinmod.com/unknown_user.png`,
-        href: "https://studio.penguinmod.com/credits.html#",
-    },
-    {
-        text: 'lukepuke311',
-        image: `https://penguinmod.com/unknown_user.png`,
-        href: "https://studio.penguinmod.com/credits.html#",
-    },
-    {
-        text: 'ma_01',
-        image: `https://penguinmod.com/unknown_user.png`,
-        href: "https://studio.penguinmod.com/credits.html#",
-    },
-    {
-        text: 'poundpound0209',
-        image: `https://penguinmod.com/unknown_user.png`,
-        href: "https://studio.penguinmod.com/credits.html#",
-    },
-    {
-        text: 'cognitixsammy',
-        image: `https://penguinmod.com/unknown_user.png`,
-        href: "https://studio.penguinmod.com/credits.html#",
-    },
-    {
-        text: 'mememaster9000',
-        image: `https://penguinmod.com/unknown_user.png`,
-        href: "https://studio.penguinmod.com/credits.html#",
-    },
-];
+const logoArtists = Promise.all([
+    '593554048188416001'
+].map(fromHardcodedDiscord));
 
 const extensionDevelopers = [
     'GarboMuffin',
@@ -553,7 +360,7 @@ const pmExtensionDevelopers = [
     'WAYLIVES',
     'MrRedstonia',
     'MikeDev101',
-    'liablelua',
+    'BopShoes',
     'AlexSchoolOH',
     'Monochromasity',
     'LilyMakesThings',
@@ -563,17 +370,16 @@ const pmExtensionDevelopers = [
     'oc9x97',
     'lego7set',
     'mariocraft987',
-    'AshimeeAlt'
+    'Ashimee'
 ].map(fromHardcodedGithub);
 
 export default {
     addonDevelopers: shuffle(addonDevelopers),
     pmDevelopers: shuffle(pmDevelopers),
+    logoArtists: shuffle(logoArtists),
     extensionDevelopers: shuffle(extensionDevelopers),
     pmExtensionDevelopers: shuffle(pmExtensionDevelopers),
     pmApiDevelopers: shuffle(pmApiDevelopers),
     pmTranslators: shuffle(pmTranslators),
-    pmSoundSubmittors: shuffle(pmSoundSubmittors),
-    pmCostumeSubmittors: shuffle(pmCostumeSubmittors),
     pmPullRequestDevelopers: shuffle(pmPullRequestDevelopers)
 };

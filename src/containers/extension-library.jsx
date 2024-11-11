@@ -34,7 +34,7 @@ const messages = defineMessages({
 // Only trust loading extension links from these origins.
 // For user-made libraries.
 const TRUSTED_LOADEXT_ORIGINS = [
-    'https://studio.penguinmod.com', // for development
+    'https://jwklong.github.io/penguinmod.github.io', // for development
     'https://extensions.penguinmod.com',
     'https://sharkpools-extensions.vercel.app',
     'https://raw.githubusercontent.com/SharkPool-SP/SharkPools-Extensions/main', // Some people cant connect to vercel
@@ -135,7 +135,7 @@ class ExtensionLibrary extends React.PureComponent {
         }
     }
 
-    async handleItemSelect(item) {
+    handleItemSelect(item) {
         // eslint-disable-next-line no-alert
         // if (item.incompatibleWithScratch && !confirm(this.props.intl.formatMessage(messages.incompatible))) {
         //     return;
@@ -158,12 +158,8 @@ class ExtensionLibrary extends React.PureComponent {
             return;
         }
         const url = (item.extensionURL ? item.extensionURL : extensionId);
-        if (item._unsandboxed) {
-            if (url.startsWith("data:")) {
-                manuallyTrustExtension(url);
-            } else {
-                await this.props.vm.securityManager.canLoadExtensionFromProject(url);
-            }
+        if (item._unsandboxed && url.startsWith("data:")) {
+            manuallyTrustExtension(url);
         }
         if (!item.disabled) {
             if (this.props.vm.extensionManager.isExtensionLoaded(extensionId)) {

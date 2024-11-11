@@ -360,8 +360,6 @@ const TWStateManager = function (WrappedComponent) {
 
             if (urlParams.has('livetests') || String(window.location.href).startsWith(`http://localhost:`)) {
                 // massive mega brained hack bc i cant figure out how to make a state
-                // ok so now i do know how to make it a state but because of the way
-                // this is used + pure laziness this wont be changing
                 this.props.vm.isLiveTest = true;
             }
 
@@ -396,12 +394,6 @@ const TWStateManager = function (WrappedComponent) {
             if (urlParams.has('optimize')) {
                 this.props.vm.setRuntimeOptions({
                     dangerousOptimizations: true
-                });
-            }
-            
-            if (urlParams.has('nooffscreen')) {
-                this.props.vm.setRuntimeOptions({
-                    disableOffscreenRendering: true
                 });
             }
 
@@ -528,12 +520,6 @@ const TWStateManager = function (WrappedComponent) {
                 } else {
                     searchParams.delete('optimize');
                 }
-                
-                if (runtimeOptions.disableOffscreenRendering) {
-                    searchParams.set('nooffscreen', '');
-                } else {
-                    searchParams.delete('nooffscreen');
-                }
 
                 setSearchParams(searchParams);
             }
@@ -618,8 +604,7 @@ const TWStateManager = function (WrappedComponent) {
             miscLimits: PropTypes.bool,
             dangerousOptimizations: PropTypes.bool,
             fencing: PropTypes.bool,
-            maxClones: PropTypes.number,
-            disableOffscreenRendering: PropTypes.bool
+            maxClones: PropTypes.number
         }),
         highQualityPen: PropTypes.bool,
         framerate: PropTypes.number,

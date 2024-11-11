@@ -16,11 +16,11 @@ const manuallyTrustExtension = url => {
 };
 
 /**
- * Trusted URL origins are allowed to load extensions without a sandbox automatically.
+ * Trusted extensions are loaded automatically and without a sandbox.
  * @param {string} url URL as a string.
  * @returns {boolean} True if the extension can is trusted
  */
-const isTrustedExtensionOrigin = url => (
+const isTrustedExtension = url => (
     // Always trust our official extension repostiory.
     url.startsWith('https://extensions.turbowarp.org/') ||
     url.startsWith('https://extensions.penguinmod.com/') ||
@@ -34,17 +34,11 @@ const isTrustedExtensionOrigin = url => (
     url.startsWith('http://localhost:8000') ||
     url.startsWith('http://localhost:6000') || // Launcher Home
     url.startsWith('http://localhost:6001') || // Launcher Extensions
-    url.startsWith('http://localhost:5173') || // Local Home or Extensions
+    url.startsWith('https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app/') || // Local Home or Extensions
     url.startsWith('http://localhost:5174') || // Local Home or Extensions
 
-    false // ignore this, just makes copy & paste easier
+    extensionsTrustedByUser.has(url)
 );
-/**
- * Trusted extensions are loaded automatically and without a sandbox.
- * @param {string} url URL as a string.
- * @returns {boolean} True if the extension can is trusted
- */
-const isTrustedExtension = url => (isTrustedExtensionOrigin(url) || extensionsTrustedByUser.has(url));
 
 /**
  * Set of fetch resource origins that were manually trusted by the user.
@@ -72,7 +66,7 @@ const isAlwaysTrustedForFetching = parsed => (
     parsed.origin.endsWith('.turbowarp.xyz') ||
 
     // Any PenguinMod service such as projects
-    parsed.origin === 'https://penguinmod.com' ||
+    parsed.origin === 'https://penguinmod-home-git-new-backend-live-penguinmod.vercel.app' ||
     parsed.origin.endsWith('.penguinmod.com') ||
 
     // GitHub
@@ -290,10 +284,8 @@ class TWSecurityManagerComponent extends React.Component {
             return true;
         }
         const { showModal } = await this.acquireModalLock();
-
-        // we allow all urls to be unsandboxed.
-        // its very likely that people would load any file unsandboxed anyways, theres no safety in blocking it for urls only.
-        // when a file is unsandboxed it can request any website anyways, so its not like its preventing remote updates either.
+        // for backwards compatibility, allow urls to be unsandboxed
+        // if (url.startsWith('data:')) {
         const allowed = await showModal(SecurityModals.LoadExtension, {
             url,
             unsandboxed: true,
@@ -312,6 +304,11 @@ class TWSecurityManagerComponent extends React.Component {
             };
         }
         return allowed;
+        // }
+        // return showModal(SecurityModals.LoadExtension, {
+        //     url,
+        //     unsandboxed: false
+        // });
     }
 
     /**
@@ -505,6 +502,5 @@ const ConnectedSecurityManagerComponent = connect(
 export {
     ConnectedSecurityManagerComponent as default,
     manuallyTrustExtension,
-    isTrustedExtension,
-    isTrustedExtensionOrigin
+    isTrustedExtension
 };

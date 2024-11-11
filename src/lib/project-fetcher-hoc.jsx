@@ -3,6 +3,12 @@ import PropTypes from 'prop-types';
 import { intlShape, injectIntl } from 'react-intl';
 import bindAll from 'lodash.bindall';
 import { connect } from 'react-redux';
+import protobufBundle from './project.protobuf.json';
+import protobuf from 'protobufjs';
+import JSZip from 'jszip';
+
+let protoRoot = protobuf.Root.fromJSON(protobufBundle);
+let Project = protoRoot.lookupType('project.Project');
 
 import { setProjectUnchanged } from '../reducers/project-changed';
 import {
@@ -42,7 +48,7 @@ const fetchProjectToken = projectId => {
     if (hashParams.has('token')) {
         return Promise.resolve(hashParams.get('token'));
     }
-    return fetch(`https://projects.penguinmod.com/api/projects/getPublished?id=${projectId}`)
+    return fetch(`https://projects.penguinmod.com/api/v1/projects/getproject?projectID=${projectId}&requestType=metadata`)
         .then(r => {
             if (!r.ok) return null;
             return r.json();
@@ -300,14 +306,28 @@ const ProjectFetcherHOC = function (WrappedComponent) {
                     storage.setProjectToken(projectId);
                     assetPromise = storage.load(storage.AssetType.Project, projectId, storage.DataFormat.JSON);
                 } else {
-                    projectUrl = `https://projects.penguinmod.com/api/projects/getPublished?type=file&safe=true&id=${projectId}`
+                    projectUrl = `https://projects.penguinmod.com/api/v1/projects/getprojectwrapper?safe=true&projectId=${projectId}`
                     assetPromise = progressMonitor.fetchWithProgress(projectUrl)
-                        .then(r => {
+                        .then(async r => {
                             this.props.vm.runtime.renderer.setPrivateSkinAccess(false);
                             if (!r.ok) {
                                 throw new Error(`Request returned status ${r.status}`);
                             }
-                            return r.arrayBuffer();
+                            const project = await r.json();
+
+                            const json = protobufToJson(new Uint8Array(project.project.data));
+
+                            // now get the assets
+                            let zip = new JSZip();
+                            zip.file("project.json", JSON.stringify(json));
+                            
+                            for (const asset of project.assets) {
+                                zip.file(asset.id, new Uint8Array(asset.buffer.data).buffer);
+                            }
+
+                            const arrayBuffer = await zip.generateAsync({ type: "arraybuffer" });
+
+                            return arrayBuffer
                         })
                         .then(buffer => ({ data: buffer }))
                         .catch(error => {

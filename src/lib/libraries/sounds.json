@@ -69,20 +69,6 @@
         "libraryFilePage": "sounds/bossa-chords.mp3"
     },
     {
-        "name": "Ottawa",
-        "tags": [
-            "music",
-            "themes",
-            "penguinmod",
-            "new"
-        ],
-        "dataFormat": "mpeg",
-        "md5ext": "sound.mp3",
-        "rate": 44100,
-        "fromPenguinModLibrary": true,
-        "libraryFilePage": "sounds/user/themes/OttawaFINAL.mp3"
-    },
-    {
         "name": "Overworld",
         "tags": [
             "music",
@@ -345,21 +331,6 @@
         "libraryFilePage": "sounds/exhale.mp3"
     },
     {
-        "name": "Final Struggle",
-        "tags": [
-            "music",
-            "loops",
-            "themes",
-            "penguinmod",
-            "new"
-        ],
-        "dataFormat": "mpeg",
-        "md5ext": "sound.mp3",
-        "rate": 44100,
-        "fromPenguinModLibrary": true,
-        "libraryFilePage": "sounds/user/themes/battletheme1.mp3"
-    },
-    {
         "name": "Fire in the Hole",
         "tags": [
             "human",
@@ -544,7 +515,8 @@
             "effects",
             "material",
             "metal",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -558,7 +530,8 @@
             "effects",
             "material",
             "metal",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -572,7 +545,8 @@
             "effects",
             "material",
             "metal",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -586,7 +560,8 @@
             "effects",
             "material",
             "metal",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -600,7 +575,8 @@
             "effects",
             "material",
             "metal",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -614,7 +590,8 @@
             "effects",
             "material",
             "metal",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -628,7 +605,8 @@
             "effects",
             "material",
             "metal",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -642,7 +620,8 @@
             "effects",
             "material",
             "metal",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -656,7 +635,8 @@
             "effects",
             "material",
             "metal",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -670,7 +650,8 @@
             "effects",
             "material",
             "metal",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -684,7 +665,8 @@
             "effects",
             "material",
             "metal",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -698,7 +680,8 @@
             "effects",
             "material",
             "metal",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -712,7 +695,8 @@
             "effects",
             "material",
             "metal",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -726,7 +710,8 @@
             "effects",
             "material",
             "metal",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -740,7 +725,8 @@
             "effects",
             "material",
             "metal",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -754,7 +740,8 @@
             "effects",
             "material",
             "metal",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -768,7 +755,8 @@
             "effects",
             "material",
             "metal",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -782,7 +770,8 @@
             "effects",
             "material",
             "metal",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -1352,7 +1341,8 @@
         "name": "Bell Ding",
         "tags": [
             "effects",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -1474,7 +1464,8 @@
             "effects",
             "cartoon",
             "wacky",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -1562,23 +1553,6 @@
         "md5ext": "04ccc72f32e909292adcaf40348be5f3.wav",
         "sampleCount": 137161,
         "rate": 22050
-    },
-    {
-        "name": "Bouncing Around",
-        "tags": [
-            "music",
-            "themes",
-            "loops",
-            "8-bit",
-            "8bit",
-            "penguinmod",
-            "new"
-        ],
-        "dataFormat": "mpeg",
-        "md5ext": "sound.mp3",
-        "rate": 44100,
-        "fromPenguinModLibrary": true,
-        "libraryFilePage": "sounds/user/loops/opl2shortthing.mp3"
     },
     {
         "name": "Bowling Strike",
@@ -3165,36 +3139,6 @@
         "rate": 22050
     },
     {
-        "name": "Drum Set3",
-        "tags": [
-            "music",
-            "loops",
-            "percussion",
-            "penguinmod",
-            "new"
-        ],
-        "dataFormat": "mpeg",
-        "md5ext": "sound.mp3",
-        "rate": 44100,
-        "fromPenguinModLibrary": true,
-        "libraryFilePage": "sounds/user/loops/DrumLoop1.mp3"
-    },
-    {
-        "name": "Drum Set4",
-        "tags": [
-            "music",
-            "loops",
-            "percussion",
-            "penguinmod",
-            "new"
-        ],
-        "dataFormat": "mpeg",
-        "md5ext": "sound.mp3",
-        "rate": 44100,
-        "fromPenguinModLibrary": true,
-        "libraryFilePage": "sounds/user/loops/DrumLoop2.mp3"
-    },
-    {
         "name": "Dubstep",
         "tags": [
             "loops",
@@ -3480,20 +3424,6 @@
         "rate": 44100,
         "fromPenguinModLibrary": true,
         "libraryFilePage": "sounds/error2.mp3"
-    },
-    {
-        "name": "Error3",
-        "tags": [
-            "effects",
-            "ui",
-            "penguinmod",
-            "new"
-        ],
-        "dataFormat": "mpeg",
-        "md5ext": "sound.mp3",
-        "rate": 44100,
-        "fromPenguinModLibrary": true,
-        "libraryFilePage": "sounds/user/effects/error.mp3"
     },
     {
         "name": "Explosion1",
@@ -4276,7 +4206,8 @@
         "tags": [
             "music",
             "loops",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -4729,7 +4660,8 @@
         "tags": [
             "effects",
             "cinematic",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -4742,7 +4674,8 @@
         "tags": [
             "effects",
             "cinematic",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -4755,7 +4688,8 @@
         "tags": [
             "effects",
             "cinematic",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -4768,7 +4702,8 @@
         "tags": [
             "effects",
             "cinematic",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -4781,7 +4716,8 @@
         "tags": [
             "effects",
             "cinematic",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -4871,23 +4807,6 @@
         "rate": 44100,
         "fromPenguinModLibrary": true,
         "libraryFilePage": "sounds/hop.mp3"
-    },
-    {
-        "name": "Jump4",
-        "tags": [
-            "effects",
-            "electronic",
-            "8-bit",
-            "8bit",
-            "games",
-            "penguinmod",
-            "new"
-        ],
-        "dataFormat": "mpeg",
-        "md5ext": "sound.mp3",
-        "rate": 44100,
-        "fromPenguinModLibrary": true,
-        "libraryFilePage": "sounds/user/effects/RetroJump.mp3"
     },
     {
         "name": "Jungle",
@@ -5182,22 +5101,6 @@
         "rate": 44100
     },
     {
-        "name": "Lethal Castle",
-        "tags": [
-            "music",
-            "loops",
-            "8bit",
-            "8-bit",
-            "penguinmod",
-            "new"
-        ],
-        "dataFormat": "mpeg",
-        "md5ext": "sound.mp3",
-        "rate": 44100,
-        "fromPenguinModLibrary": true,
-        "libraryFilePage": "sounds/user/loops/LethalCastle.mp3"
-    },
-    {
         "name": "Lo Geh Tabla",
         "tags": [
             "drums",
@@ -5402,7 +5305,8 @@
         "tags": [
             "effects",
             "monster",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -5415,7 +5319,8 @@
         "tags": [
             "effects",
             "monster",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -5428,7 +5333,8 @@
         "tags": [
             "effects",
             "monster",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -5441,7 +5347,8 @@
         "tags": [
             "effects",
             "monster",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -5908,21 +5815,6 @@
         "rate": 44100
     },
     {
-        "name": "Sad Serenade",
-        "tags": [
-            "music",
-            "themes",
-            "cinematic",
-            "penguinmod",
-            "new"
-        ],
-        "dataFormat": "mpeg",
-        "md5ext": "sound.mp3",
-        "rate": 44100,
-        "fromPenguinModLibrary": true,
-        "libraryFilePage": "sounds/sad_serenade.mp3"
-    },
-    {
         "name": "Scrambling Feet",
         "tags": [
             "wacky",
@@ -6032,7 +5924,8 @@
             "voice",
             "human",
             "wacky",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -6046,19 +5939,6 @@
             "voice",
             "human",
             "wacky",
-            "penguinmod"
-        ],
-        "dataFormat": "mpeg",
-        "md5ext": "sound.mp3",
-        "rate": 44100,
-        "fromPenguinModLibrary": true,
-        "libraryFilePage": "sounds/scream7.mp3"
-    },
-    {
-        "name": "Scream8",
-        "tags": [
-            "voice",
-            "human",
             "penguinmod",
             "new"
         ],
@@ -6066,7 +5946,7 @@
         "md5ext": "sound.mp3",
         "rate": 44100,
         "fromPenguinModLibrary": true,
-        "libraryFilePage": "sounds/user/effects/willhelm.mp3"
+        "libraryFilePage": "sounds/scream7.mp3"
     },
     {
         "name": "Screech",
@@ -6211,7 +6091,8 @@
         "name": "Slam 2",
         "tags": [
             "effects",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -6223,7 +6104,8 @@
         "name": "Slam 3",
         "tags": [
             "effects",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -6235,7 +6117,8 @@
         "name": "Slam 4",
         "tags": [
             "effects",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -6247,7 +6130,8 @@
         "name": "Slam 5",
         "tags": [
             "effects",
-            "penguinmod"
+            "penguinmod",
+            "new"
         ],
         "dataFormat": "mpeg",
         "md5ext": "sound.mp3",
@@ -6392,22 +6276,6 @@
         "md5ext": "362d7440a57cab29914fecea621e50d4.wav",
         "sampleCount": 17273,
         "rate": 22050
-    },
-    {
-        "name": "Sorrowful Piano",
-        "tags": [
-            "music",
-            "themes",
-            "cinematic",
-            "sad",
-            "penguinmod",
-            "new"
-        ],
-        "dataFormat": "mpeg",
-        "md5ext": "sound.mp3",
-        "rate": 44100,
-        "fromPenguinModLibrary": true,
-        "libraryFilePage": "sounds/sorrowful_piano.mp3"
     },
     {
         "name": "Space Ambience",
@@ -7164,20 +7032,6 @@
         "rate": 44100
     },
     {
-        "name": "Upbeat n' Uphill",
-        "tags": [
-            "music",
-            "loops",
-            "penguinmod",
-            "new"
-        ],
-        "dataFormat": "mpeg",
-        "md5ext": "sound.mp3",
-        "rate": 44100,
-        "fromPenguinModLibrary": true,
-        "libraryFilePage": "sounds/upbeat_n_uphill.mp3"
-    },
-    {
         "name": "Video Game 1",
         "tags": [
             "loops",
@@ -7205,70 +7059,6 @@
         "md5ext": "287c477da485506c5b4ce37c57a64b5f.wav",
         "sampleCount": 150369,
         "rate": 22050
-    },
-    {
-        "name": "Villian 1",
-        "tags": [
-            "effects",
-            "wacky",
-            "evil",
-            "voice",
-            "penguinmod",
-            "new"
-        ],
-        "dataFormat": "mpeg",
-        "md5ext": "sound.mp3",
-        "rate": 44100,
-        "fromPenguinModLibrary": true,
-        "libraryFilePage": "sounds/user/effects/evil_villian_1.mp3"
-    },
-    {
-        "name": "Villian 2",
-        "tags": [
-            "effects",
-            "wacky",
-            "evil",
-            "voice",
-            "penguinmod",
-            "new"
-        ],
-        "dataFormat": "mpeg",
-        "md5ext": "sound.mp3",
-        "rate": 44100,
-        "fromPenguinModLibrary": true,
-        "libraryFilePage": "sounds/user/effects/evil_villian_2.mp3"
-    },
-    {
-        "name": "Villian 3",
-        "tags": [
-            "effects",
-            "wacky",
-            "evil",
-            "voice",
-            "penguinmod",
-            "new"
-        ],
-        "dataFormat": "mpeg",
-        "md5ext": "sound.mp3",
-        "rate": 44100,
-        "fromPenguinModLibrary": true,
-        "libraryFilePage": "sounds/user/effects/evil_villian_3.mp3"
-    },
-    {
-        "name": "Villian 4",
-        "tags": [
-            "effects",
-            "wacky",
-            "evil",
-            "voice",
-            "penguinmod",
-            "new"
-        ],
-        "dataFormat": "mpeg",
-        "md5ext": "sound.mp3",
-        "rate": 44100,
-        "fromPenguinModLibrary": true,
-        "libraryFilePage": "sounds/user/effects/evil_villian_4.mp3"
     },
     {
         "name": "Wah Beatbox",
@@ -7397,21 +7187,6 @@
         "rate": 44100,
         "fromPenguinModLibrary": true,
         "libraryFilePage": "sounds/win3.mp3"
-    },
-    {
-        "name": "Wind Blowing",
-        "tags": [
-            "effects",
-            "ambience",
-            "background",
-            "penguinmod",
-            "new"
-        ],
-        "dataFormat": "mpeg",
-        "md5ext": "sound.mp3",
-        "rate": 44100,
-        "fromPenguinModLibrary": true,
-        "libraryFilePage": "sounds/user/effects/wind_blowing.mp3"
     },
     {
         "name": "Wobble",

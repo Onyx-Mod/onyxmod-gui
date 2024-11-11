@@ -34,12 +34,7 @@
     padding: 0.25rem;
     padding-bottom: 0;
 }
-.library-item-sound.library-item-new {
-    /*
-        we have to use hue-rotate,
-        since the waveforms have their color baked in by design
-        & the play button styling would be annoying
-    */
+.library-item-new {
     filter: hue-rotate(60deg);
 }
 .library-item-new-badge {
@@ -47,14 +42,11 @@
     color: white;
     font-size: 10px;
     font-weight: bold;
-    background-color: #EB6566;
+    background-color: $sound-primary;
     padding: 1px 5px;
     position: absolute;
     left: -8px;
     top: -8px;
-}
-.library-item-sound .library-item-new-badge {
-    background-color: $sound-primary;
 }
 
 .library-item-extension {
@@ -66,12 +58,6 @@
     border-color: $motion-primary;
 }
 .library-item-sound:hover {
-    border-color: $sound-primary;
-}
-.library-item-new:hover {
-    border-color: #EB6566;
-}
-.library-item-new.library-item-sound:hover {
     border-color: $sound-primary;
 }
 
