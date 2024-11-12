@@ -21,7 +21,7 @@ const fromHardcodedGithub = username => ({
 });
 const fromHardcodedNamed = username => ({
     image: `https://penguinmod.com/unknown_user.png`,
-    href: "https://jwklong.github.io/penguinmod.github.io/credits.html#",
+    href: "https://penguinmod.com/credits.html#",
     text: username
 });
 
