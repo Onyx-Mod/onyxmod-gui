@@ -164,7 +164,7 @@ const Footer = () => (
                     </a>
                 </div>
                 <div className={styles.footerSection}>
-                    <a href="https://penguinmod.com/PenguinMod-Packager">
+                    <a href="https://studio.penguinmod.com/PenguinMod-Packager">
                         {/* Do not translate */}
                         {'OnyxMod Packager'}
                     </a>

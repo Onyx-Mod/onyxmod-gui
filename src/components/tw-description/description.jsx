@@ -228,7 +228,7 @@ class Renderer {
         if (/^\d{6,}$/.test(id)) {
             return (
                 <a
-                    href={`https://penguinmod.com/#${id}`}
+                    href={`https://studio.penguinmod.com/#${id}`}
                 >
                     {`#${id}`}
                 </a>
