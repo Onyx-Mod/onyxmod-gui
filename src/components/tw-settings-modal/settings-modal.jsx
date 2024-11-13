@@ -294,6 +294,27 @@ const EnableDangerousOptimizations = props => (
     />
 );
 
+const DisableOffscreenRendering = props => (
+    <BooleanSetting
+        {...props}
+        label={
+            <FormattedMessage
+                defaultMessage="Disable Off Screen Rendering"
+                description="Disable Out of Bounds Rendering setting"
+                id="pm.settingsModal.oobRendering"
+            />
+        }
+        help={
+            <FormattedMessage
+                defaultMessage="When enabled all sprites that are off screen will not be rendered."
+                description="Out of Bounds Rendering setting help"
+                id="pm.settingsModal.oobRenderingHelp"
+            />
+        }
+        // slug="out-of-bounds-rendering"
+    />
+);
+
 const WarpTimer = props => (
     <BooleanSetting
         {...props}
@@ -517,6 +538,10 @@ const SettingsModalComponent = props => (
                     id="pm.settingsModal.optimizations"
                 />
             </Header>
+            <DisableOffscreenRendering
+                value={props.disableOffscreenRendering}
+                onChange={props.onDisableOffscreenRenderingChange}
+            />
             <EnableDangerousOptimizations
                 value={props.dangerousOptimizations}
                 onChange={props.onEnableDangerousOptimizationsChange}
@@ -588,7 +613,9 @@ SettingsModalComponent.propTypes = {
     disableCompiler: PropTypes.bool,
     dangerousOptimizations: PropTypes.bool,
     onDisableCompilerChange: PropTypes.func,
-    onEnableDangerousOptimizationsChange: PropTypes.func
+    onEnableDangerousOptimizationsChange: PropTypes.func,
+    disableOffscreenRendering: PropTypes.bool,
+    onDisableOffscreenRenderingChange: PropTypes.func
 };
 
 export default injectIntl(SettingsModalComponent);

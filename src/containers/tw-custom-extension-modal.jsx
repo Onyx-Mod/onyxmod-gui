@@ -6,7 +6,7 @@ import log from '../lib/log';
 import localforage from 'localforage';
 import CustomExtensionModalComponent from '../components/tw-custom-extension-modal/custom-extension-modal.jsx';
 import {closeCustomExtensionModal} from '../reducers/modals';
-import {manuallyTrustExtension, isTrustedExtension} from './tw-security-manager.jsx';
+import {manuallyTrustExtension, isTrustedExtension, isTrustedExtensionOrigin} from './tw-security-manager.jsx';
 
 const generateRandomId = () => {
     const randomChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -125,7 +125,7 @@ class CustomExtensionModal extends React.Component {
         this.handleClose();
         try {
             const url = await this.getExtensionURL();
-            if (this.state.type !== 'url' && this.state.unsandboxed) {
+            if (this.state.unsandboxed) {
                 manuallyTrustExtension(url);
             }
             if (this.props.swapId) {
@@ -136,7 +136,7 @@ class CustomExtensionModal extends React.Component {
                 if (!loadedIds.includes(this.props.swapId)) {
                     for (const ext of loadedIds) this.props.vm.extensionManager.removeExtension(ext);
                     // eslint-disable-next-line no-alert
-                    alert('The extension you used to for the edit had a different id to the one you where editing.');
+                    alert('The extension you used for the edit had a different ID than the one you were editing.');
                 }
                 this.props.vm.runtime._removeExtensionPrimitive(this.props.swapId);
                 loadedIds.forEach(extId => {
@@ -152,12 +152,15 @@ class CustomExtensionModal extends React.Component {
         } catch (err) {
             failed = true;
             log.error(err);
-            // eslint-disable-next-line no-alert
-            alert(err);
+
+            if (err) {
+                // eslint-disable-next-line no-alert
+                alert(err);
+            }
         } finally {
             if (failed && this.props.swapId) {
                 // eslint-disable-next-line no-alert
-                alert('The extension you used to for the edit has failed to load.');
+                alert('The extension you used for the edit has failed to load.');
                 this.props.vm.runtime._removeExtensionPrimitive(this.props.swapId);
             }
             if (failed) return;
@@ -220,12 +223,15 @@ class CustomExtensionModal extends React.Component {
     }
     isUnsandboxed () {
         if (this.state.type === 'url') {
-            return isTrustedExtension(this.state.url);
+            if (isTrustedExtensionOrigin(this.state.url)) return true;
         }
         return this.state.unsandboxed;
     }
     canChangeUnsandboxed () {
-        return this.state.type !== 'url';
+        if (this.state.type === "url" && isTrustedExtensionOrigin(this.state.url)) {
+            return false;
+        }
+        return true;
     }
     handleChangeUnsandboxed (e) {
         this.setState({
