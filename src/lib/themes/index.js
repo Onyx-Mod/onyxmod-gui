@@ -1,81 +1,109 @@
 import defaultsDeep from 'lodash.defaultsdeep';
-import {defineMessages} from 'react-intl';
 
-import {
-    blockColors as darkModeBlockColors,
-    extensions as darkModeExtensions
-} from './dark';
-import {
-    blockColors as highContrastBlockColors,
-    extensions as highContrastExtensions
-} from './high-contrast';
-import {blockColors as defaultColors} from './default';
+import * as blocksThree from './blocks/three';
+import * as blocksHighContrast from './blocks/high-contrast';
+import * as blocksDark from './blocks/dark';
 
-import defaultIcon from './default/icon.svg';
-import highContrastIcon from './high-contrast/icon.svg';
 
-const DEFAULT_THEME = 'default';
-const HIGH_CONTRAST_THEME = 'high-contrast';
-const DARK_THEME = 'dark';
-
-const mergeWithDefaults = colors => defaultsDeep({}, colors, defaultColors);
-
-const messages = defineMessages({
-    [DEFAULT_THEME]: {
-        id: 'gui.theme.default',
-        defaultMessage: 'Original',
-        description: 'label for original theme'
-    },
-    [DARK_THEME]: {
-        id: 'gui.theme.dark',
-        defaultMessage: 'Dark',
-        description: 'label for dark mode theme'
-    },
-    [HIGH_CONTRAST_THEME]: {
-        id: 'gui.theme.highContrast',
-        defaultMessage: 'High Contrast',
-        description: 'label for high theme'
-    }
-});
-
-const themeMap = {
-    [DEFAULT_THEME]: {
+const BLOCKS_THREE = 'three';
+const BLOCKS_DARK = 'dark';
+const BLOCKS_HIGH_CONTRAST = 'high-contrast';
+const BLOCKS_CUSTOM = 'custom';
+const BLOCKS_DEFAULT = BLOCKS_THREE;
+const defaultBlockColors = blocksThree.blockColors;
+const BLOCKS_MAP = {
+    [BLOCKS_THREE]: {
         blocksMediaFolder: 'blocks-media/default',
-        colors: defaultColors,
-        extensions: {},
-        label: messages[DEFAULT_THEME],
-        icon: defaultIcon
+        colors: blocksThree.blockColors,
+        extensions: blocksThree.extensions,
+        customExtensionColors: {},
+        useForStage: true
     },
-    [DARK_THEME]: {
-        blocksMediaFolder: 'blocks-media/default',
-        colors: mergeWithDefaults(darkModeBlockColors),
-        extensions: darkModeExtensions,
-        label: messages[DARK_THEME]
-    },
-    [HIGH_CONTRAST_THEME]: {
+    [BLOCKS_HIGH_CONTRAST]: {
         blocksMediaFolder: 'blocks-media/high-contrast',
-        colors: mergeWithDefaults(highContrastBlockColors),
-        extensions: highContrastExtensions,
-        label: messages[HIGH_CONTRAST_THEME],
-        icon: highContrastIcon
+        colors: defaultsDeep({}, blocksHighContrast.blockColors, defaultBlockColors),
+        extensions: blocksHighContrast.extensions,
+        customExtensionColors: blocksHighContrast.customExtensionColors,
+        useForStage: true
+    },
+    [BLOCKS_DARK]: {
+        blocksMediaFolder: 'blocks-media/default',
+        colors: defaultsDeep({}, blocksDark.blockColors, defaultBlockColors),
+        extensions: blocksDark.extensions,
+        customExtensionColors: blocksDark.customExtensionColors,
+        useForStage: false
+    },
+    [BLOCKS_CUSTOM]: {
+        // to be filled by editor-theme3 addon
+        blocksMediaFolder: 'blocks-media/default',
+        colors: blocksThree.blockColors,
+        extensions: {},
+        customExtensionColors: {},
+        useForStage: false
     }
 };
 
-const getColorsForTheme = theme => {
-    const themeInfo = themeMap[theme];
+let themeObjectsCreated = 0;
 
-    if (!themeInfo) {
-        throw new Error(`Undefined theme ${theme}`);
+class Theme {
+    constructor (accent, gui, blocks) {
+        // do not modify these directly
+        /** @readonly */
+        this.id = ++themeObjectsCreated;
+        /** @readonly */
+        this.blocks = Object.prototype.hasOwnProperty.call(BLOCKS_MAP, blocks) ? blocks : BLOCKS_DEFAULT;
     }
 
-    return themeInfo.colors;
-};
+    static light = new Theme(BLOCKS_DEFAULT);
+    static dark = new Theme(BLOCKS_DEFAULT);
+    static highContrast = new Theme(BLOCKS_HIGH_CONTRAST);
+
+    set (what, to) {
+        if (what === 'blocks') {
+            return new Theme(this.accent, this.gui, to);
+        }
+        throw new Error(`Unknown theme property: ${what}`);
+    }
+
+    getBlocksMediaFolder () {
+        return BLOCKS_MAP[this.blocks].blocksMediaFolder;
+    }
+
+
+    getBlockColors () {
+        return defaultsDeep(
+            {},
+            BLOCKS_MAP[this.blocks].colors
+        );
+    }
+
+    getExtensions () {
+        return BLOCKS_MAP[this.blocks].extensions;
+    }
+
+    isDark () {
+        return this.getGuiColors()['color-scheme'] === 'dark';
+    }
+
+    getStageBlockColors () {
+        if (BLOCKS_MAP[this.blocks].useForStage) {
+            return this.getBlockColors();
+        }
+        return Theme.light.getBlockColors();
+    }
+
+    getCustomExtensionColors () {
+        return BLOCKS_MAP[this.blocks].customExtensionColors;
+    }
+}
 
 export {
-    DEFAULT_THEME,
-    DARK_THEME,
-    HIGH_CONTRAST_THEME,
-    defaultColors,
-    getColorsForTheme,
-    themeMap
+    Theme,
+    defaultBlockColors,
+
+    BLOCKS_THREE,
+    BLOCKS_DARK,
+    BLOCKS_HIGH_CONTRAST,
+    BLOCKS_CUSTOM,
+    BLOCKS_MAP
 };

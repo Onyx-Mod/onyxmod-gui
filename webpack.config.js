@@ -73,6 +73,7 @@ const base = {
                 /node_modules[\\/]scratch-[^\\/]+[\\/]src/,
                 /node_modules[\\/]pify/,
                 /node_modules[\\/]@vernier[\\/]godirect/
+                /node_modules[\\/]cookie/
             ],
             options: {
                 // Explicitly disable babelrc so we don't catch various config
@@ -226,7 +227,16 @@ module.exports = [
                 patterns: [
                     {
                         from: 'node_modules/scratch-blocks/media',
-                        to: 'static/blocks-media'
+                        to: 'static/blocks-media/default'
+                    },
+                    {
+                        from: 'node_modules/scratch-blocks/media',
+                        to: 'static/blocks-media/high-contrast'
+                    },
+                    {
+                        from: 'src/lib/themes/blocks/high-contrast-media/blocks-media',
+                        to: 'static/blocks-media/high-contrast',
+                        force: true
                     }
                 ]
             }),

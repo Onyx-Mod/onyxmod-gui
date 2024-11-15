@@ -11,7 +11,7 @@ import {BLOCKS_CUSTOM, BLOCKS_DARK, BLOCKS_HIGH_CONTRAST, BLOCKS_THREE, Theme} f
 import {openBlocksThemeMenu, blocksThemeMenuOpen, closeSettingsMenu} from '../../reducers/menus.js';
 import {setTheme} from '../../reducers/theme.js';
 import {persistTheme} from '../../lib/themes/themePersistance.js';
-import styles from './settings-menu.css';
+import styles from './menu-bar.css';
 import threeIcon from './tw-blocks-three.svg';
 import highContrastIcon from './tw-blocks-high-contrast.svg';
 import darkIcon from './tw-blocks-dark.svg';
@@ -53,6 +53,7 @@ const ThemeIcon = ({id}) => (
         src={icons[id]}
         draggable={false}
         width={24}
+        style={{position: 'relative', top: '7px'}}
     />
 );
 
@@ -60,24 +61,28 @@ ThemeIcon.propTypes = {
     id: PropTypes.string
 };
 
-const ThemeMenuItem = ({id, disabled, isSelected, onClick}) => (
+const ThemeMenuItem = ({id, disabled, isSelected, onClick, isRtl}) => (
     <MenuItem onClick={disabled ? null : onClick}>
         <div className={classNames(styles.option, {[styles.disabled]: disabled})}>
             <img
                 width={15}
                 height={12}
-                className={classNames(styles.check, {[styles.selected]: isSelected})}
+                className={classNames(styles.check)}
+                style={{opacity: isSelected === true ? '1' : '0'}}
                 src={check}
                 draggable={false}
             />
             <ThemeIcon id={id} />
-            <FormattedMessage {...options[id]} />
+            <span style={{position: 'relative', left: isRtl ? '-7px' : '7px'}}>
+                <FormattedMessage {...options[id]} />
+            </span>
             {id === BLOCKS_CUSTOM && (
                 <img
                     width={20}
                     height={20}
                     className={styles.openLink}
                     src={openLinkIcon}
+                    style={{position: 'relative', top: '7px', left: isRtl ? '-7px' : '7px'}}
                     draggable={false}
                 />
             )}
@@ -86,6 +91,7 @@ const ThemeMenuItem = ({id, disabled, isSelected, onClick}) => (
 );
 
 ThemeMenuItem.propTypes = {
+    isRtl: PropTypes.bool,
     id: PropTypes.string,
     isSelected: PropTypes.bool,
     onClick: PropTypes.func,
@@ -106,7 +112,10 @@ const BlocksThemeMenu = ({
             onClick={onOpenMenu}
         >
             <ThemeIcon id={theme.blocks} />
-            <span className={styles.submenuLabel}>
+            <span
+                className={styles.submenuLabel}
+                style={{position: 'relative', left: isRtl ? '-7px' : '7px'}}
+            >
                 <FormattedMessage
                     defaultMessage="Block Colors"
                     description="Label for to choose what color blocks should be, eg. original or high contrast"
@@ -117,6 +126,7 @@ const BlocksThemeMenu = ({
                 className={styles.expandCaret}
                 src={dropdownCaret}
                 draggable={false}
+                style={{position: 'relative', float: isRtl ? 'left' : 'right', top: '15px'}}
             />
         </div>
         <Submenu place={isRtl ? 'left' : 'right'}>
@@ -150,7 +160,7 @@ BlocksThemeMenu.propTypes = {
 const mapStateToProps = state => ({
     isOpen: blocksThemeMenuOpen(state),
     isRtl: state.locales.isRtl,
-    theme: state.scratchGui.theme.theme
+    theme: state.scratchGui.theme?.theme || new Theme()
 });
 
 const mapDispatchToProps = dispatch => ({

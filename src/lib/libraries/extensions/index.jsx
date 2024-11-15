@@ -135,6 +135,7 @@ import theshovelColorPickerIcon from './penguinmod/orgtw/ColorPicker.svg';
 
 // sharkpool
 import sharkpoolPrintingIcon from './penguinmod/extensions/printing.svg';
+import sharkpoolTuneIcon from './penguinmod/extensions/tuneShark.svg';
 import jgScriptsExtensionIcon from './penguinmod/extensions/scripts.svg';
 
 // events
@@ -354,6 +355,14 @@ const menuItems = [
         iconURL: jgExtendedAudioExtensionIcon,
         tags: ['penguinmod', 'categoryexpansion', 'noisemaker'],
         description: 'An audio grouping system for more intensive audio work.',
+        featured: true
+    },
+    {
+        name: 'Tune Shark V3',
+        extensionId: 'https://sharkpools-extensions.vercel.app/extension-code/Tune-Shark-V3.js',
+        iconURL: sharkpoolTuneIcon,
+        tags: ['penguinmod', 'categoryexpansion', 'noisemaker'],
+        description: 'Advanced audio engine with complex sound control, multiple audio effects and more!',
         featured: true
     },
     {

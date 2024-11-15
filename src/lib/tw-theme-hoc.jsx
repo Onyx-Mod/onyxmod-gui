@@ -1,5 +1,9 @@
 import React from 'react';
 import darkModeCSS from '!raw-loader!./tw-theme-dark.css';
+import {BLOCKS_CUSTOM, Theme} from './themes';
+
+import {detectTheme, onSystemPreferenceChange} from './themes/themePersistance';
+import {setTheme} from '../reducers/theme';
 
 const THEME_KEY = 'tw:theme';
 
