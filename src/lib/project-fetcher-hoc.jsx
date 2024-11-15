@@ -218,7 +218,7 @@ function protobufToJson(buffer) {
     }
 
     for (const extensionData in json.extensionData) {
-        newJson.extensionData[extensionData] = JSON.parse(json.extensionData[extensionData]);
+        newJson.extensionData[extensionData] = json.extensionData[extensionData];
     }
 
     for (const extensionURL in json.extensionURLs) {
