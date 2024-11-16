@@ -31,7 +31,7 @@ import ChangeUsername from '../../containers/tw-change-username.jsx';
 import CloudVariablesToggler from '../../containers/tw-cloud-toggler.jsx';
 import TWSaveStatus from './tw-save-status.jsx';
 
-import { openTipsLibrary, openSettingsModal, openRestorePointModal, openExtManagerModal } from '../../reducers/modals';
+import { openTipsLibrary, openSettingsModal, openRestorePointModal } from '../../reducers/modals';
 import { setPlayer } from '../../reducers/mode';
 import {
     autoUpdateProject,
@@ -958,9 +958,6 @@ class MenuBar extends React.Component {
                                     )}</CloudVariablesToggler>
                                 </MenuSection>
                                 <MenuSection>
-                                <MenuItem onClick={this.props.onClickExtManager}>
-                                        Alternative Extension Manager
-                                    </MenuItem>
                                     <MenuItem onClick={this.props.onClickSettings}>
                                         <FormattedMessage
                                             defaultMessage="Gameplay Settings"
@@ -1170,7 +1167,6 @@ MenuBar.propTypes = {
     onClickSave: PropTypes.func,
     onClickSaveAsCopy: PropTypes.func,
     onClickSettings: PropTypes.func,
-    onClickExtManager: PropTypes.func,
     onClickErrors: PropTypes.func,
     onRequestCloseErrors: PropTypes.func,
     onLogOut: PropTypes.func,
@@ -1274,10 +1270,6 @@ const mapDispatchToProps = dispatch => ({
     onClickRestorePoints: () => dispatch(openRestorePointModal()),
     onClickSettings: () => {
         dispatch(openSettingsModal());
-        dispatch(closeEditMenu());
-    },
-    onClickExtManager: () => {
-        dispatch(openExtManagerModal());
         dispatch(closeEditMenu());
     },
     onSeeCommunity: () => dispatch(setPlayer(true))
