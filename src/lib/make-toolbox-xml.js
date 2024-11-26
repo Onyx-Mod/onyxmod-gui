@@ -633,6 +633,13 @@ const control = function (isInitialSetup, isStage, targetId, colors) {
             </value>
         </block>
         <block id="forever" type="control_forever"/>
+        <block id="for_each" type="control_for_each">
+            <value name="VALUE">
+                <shadow type="math_whole_number">
+                    <field name="NUM">10</field>
+                </shadow>
+            </value>
+        </block>
         <block type="control_exitLoop"/>
         <block type="control_continueLoop"/>
         ${blockSeparator}
@@ -659,13 +666,6 @@ const control = function (isInitialSetup, isStage, targetId, colors) {
         <block id="wait_until" type="control_wait_until"/>
         <block id="repeat_until" type="control_repeat_until"/>
         <block id="while" type="control_while"/>
-        <block id="for_each" type="control_for_each">
-            <value name="VALUE">
-                <shadow type="math_whole_number">
-                    <field name="NUM">10</field>
-                </shadow>
-            </value>
-        </block>
         <block type="control_if_return_else_return">
             <value name="boolean"></value>
             <value name="TEXT1">
@@ -1013,16 +1013,33 @@ const operators = function (isInitialSetup, isStage, targetId, colors) {
                 </shadow>
             </value>
         </block>
-        <block type="operator_advMath">
-            <value name="ONE">
+        <block type="operator_power">
+            <value name="NUM1">
                 <shadow type="math_number">
-                    <field name="NUM">1</field>
+                    <field name="NUM"/>
                 </shadow>
             </value>
-            <field name="OPTION">^</field>
+            <value name="NUM2">
+                <shadow type="math_number">
+                    <field name="NUM"/>
+                </shadow>
+            </value>
+        </block>
+        <block type="operator_advMathExpanded">
+            <value name="ONE">
+                <shadow type="math_number">
+                    <field name="NUM">3</field>
+                </shadow>
+            </value>
             <value name="TWO">
                 <shadow type="math_number">
                     <field name="NUM">2</field>
+                </shadow>
+            </value>
+            <field name="OPTION">root</field>
+            <value name="THREE">
+                <shadow type="math_number">
+                    <field name="NUM">16</field>
                 </shadow>
             </value>
         </block>
@@ -1225,7 +1242,7 @@ const operators = function (isInitialSetup, isStage, targetId, colors) {
                     </shadow>
                 </value>
             </block>
-            <block type="operator_getLettersFromIndexToIndexInText">
+            <block type="operator_getLettersFromIndexToIndexInTextFixed">
                 <value name="INDEX1">
                     <shadow type="math_number">
                         <field name="NUM">2</field>
