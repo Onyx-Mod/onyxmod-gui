@@ -103,14 +103,10 @@ const TWProjectMetaFetcherHOC = function (WrappedComponent) {
                         this.props.onSetDescription(instructions, credits);
                     }
                     if (
-                        typeof rawData.accepted === 'boolean'
-                        || typeof rawData.removedsoft === 'boolean'
-                        || String(rawData.remix) !== '0' // checks isRemix and remixId existing at the same time
-                        || typeof rawData.tooLarge === 'boolean'
-                        || authorName
+                        rawData.public === true
                     ) {
                         this.props.onSetExtraProjectInfo(
-                            rawData.public && !rawData.softRejected,
+                            rawData.public,
                             String(rawData.remix) !== '0',
                             String(rawData.remix),
                             false,
@@ -118,31 +114,27 @@ const TWProjectMetaFetcherHOC = function (WrappedComponent) {
                             new Date(rawData.lastUpdate),
                             rawData.lastUpdate !== rawData.date
                         );
-                    }
-                    if (rawData.remix > 0) {
-                        // this is a remix, find the original project
-                        fetchProjectMeta(rawData.remix)
-                            .then(remixProject => {
-                                // If project ID changed, ignore the results.
-                                if (this.props.projectId !== projectId) {
-                                    return;
-                                }
-                                // If this project is hidden or not approved, ignore the results.
-                                if (
-                                    typeof remixProject.name === 'string'
-                                    || typeof remixProject.owner === 'string'
-                                ) {
+
+                        if (String(rawData.remix) !== '0') {
+                            // this is a remix, find the original project
+                            fetchProjectMeta(rawData.remix)
+                                .then(remixProject => {
+                                    // If project ID changed, ignore the results.
+                                    if (this.props.projectId !== projectId) {
+                                        return;
+                                    }
+
                                     this.props.onSetRemixedProjectInfo(
                                         true, // loaded
-                                        remixProject.name,
-                                        remixProject.owner
+                                        remixProject.title,
+                                        remixProject.author.username
                                     );
-                                }
-                            })
-                            .catch(err => {
-                                // this isnt fatal, just log
-                                log.warn('cannot fetch remixed project meta for this project;', err);
-                            });
+                                })
+                                .catch(err => {
+                                    // this isnt fatal, just log
+                                    log.warn('cannot fetch remixed project meta for this project;', err);
+                                });
+                        }
                     }
                     setIndexable(true);
                 })
